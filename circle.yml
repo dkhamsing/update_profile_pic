@@ -1,0 +1,13 @@
+machine:
+  ruby:
+    version: 2.2.0
+test:
+  pre:
+    - rake install
+  override:
+    - update_profile_pic
+    - ruby test/update_test.rb
+general:
+  artifacts:
+    - log.txt
+    - image.png
