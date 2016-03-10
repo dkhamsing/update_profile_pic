@@ -16,7 +16,7 @@ $ rake install
 
 ```shell
 $ update_profile_pic --create-config
-open this url in your browser (sign in and authorize): https://api.twitter.com/oauth/authorize?oauth_token=X8uY5AAAAAAAt_QtAAABU1e2AIc
+open this url in your browser (sign in and authorize): https://api.twitter.com/oauth/authorize?oauth_token=...
 enter pin: ...
 wrote config.yaml ✨
 ```
