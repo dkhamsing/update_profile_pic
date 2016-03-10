@@ -7,9 +7,13 @@ module UpdateProfilePic
 
   class << self
     OPTION_CREATE = '--create-config'
+    OPTION_CONFIG = '--config'
 
     def usage
-      puts "usage: #{PROJECT} <image file>"
+      puts "usage: \n"\
+           "  #{PROJECT} <image file> #{OPTION_CONFIG} <config file> \n"\
+           "  to create config file, type: #{PROJECT} #{OPTION_CREATE} \n"\
+           "  more info → https://github.com/dkhamsing/update_profile_pic"
     end
 
     def cli
@@ -25,24 +29,27 @@ module UpdateProfilePic
         exit
       end
 
-      unless File.exist? CONFIG
-        puts "missing config.yml, to create one, type: #{PROJECT} #{OPTION_CREATE}"
-        puts 'more info → https://github.com/dkhamsing/update_profile_pic'
+      if ARGV.include? OPTION_CONFIG
+        position = ARGV.index OPTION_CONFIG
+        cfgfile = ARGV[position+1]
+      else
+        puts 'error: missing --config options'
+        usage
         exit
       end
 
-      c = config(CONFIG)
-
-      file = ARGV[0]
+      stripped_args = ARGV - [OPTION_CONFIG] - [cfgfile]
+      file = stripped_args[0]
       unless File.exist? file
         puts "error: #{file} does not exist"
         exit
       end
       puts "updating profile pic with #{file} ..."
 
+      c = config(cfgfile)
       t = c['twitter']
       if t.count == 0
-        puts "error: could not load credentials from #{CONFIG}"
+        puts "error: could not load credentials from #{cfgfile}"
         exit
       end
 

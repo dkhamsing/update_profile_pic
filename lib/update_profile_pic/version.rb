@@ -4,8 +4,6 @@ module UpdateProfilePic
 
   PROJECT = 'update_profile_pic'
 
-  CONFIG = 'config.yaml'
-
   # OAuth Keys
   CONSUMER_KEY = 'CONSUMER_KEY'
   CONSUMER_SECRET = 'CONSUMER_SECRET'

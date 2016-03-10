@@ -23,10 +23,10 @@ wrote config.yaml ✨
 
 ## Usage  
 
-`update_profile_pic <image file>`
+`update_profile_pic <image file> --config <config file>`
 
 ```shell
-$ update_profile_pic image.png
+$ update_profile_pic image.png --config config.yml
 updating profile pic with image.png...
 updating @dkhamsing...
 profile pic updated ✨
